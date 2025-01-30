@@ -7,14 +7,20 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
     const validation = IssueSchema.safeParse(body);
     if (!validation.success)
         return NextResponse.json(validation.error.errors, { status: 400 })
-    const issue = prisma.issue.findUnique({
-        where: {
-            id: parseInt(params.id)
-        },
-    });
-    if (!issue) {
-        return NextResponse.json({ error: 'Invalid Issue' }, { status: 404 });
+
+    const issueId = Number(params.id);
+    if (isNaN(issueId)) {
+        return NextResponse.json({ error: "Invalid issue ID" }, { status: 400 });
     }
+
+    const issue = await prisma.issue.findUnique({
+        where: { id: issueId },
+    });
+
+    if (!issue) {
+        return NextResponse.json({ error: "Issue not found" }, { status: 404 });
+    }
+
     const updatedIssue = prisma.issue.update({
         where: {
             id: parseInt(params.id)
