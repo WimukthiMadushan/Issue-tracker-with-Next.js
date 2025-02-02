@@ -1,9 +1,2 @@
-import React from 'react'
-
-const loading = () => {
-  return (
-    <div>loading</div>
-  )
-}
-
-export default loading
+import IssueFormSkelton from "../../_components/IssueFormSkelton";
+export default IssueFormSkelton;
