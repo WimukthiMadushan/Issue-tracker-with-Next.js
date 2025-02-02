@@ -21,7 +21,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
         return NextResponse.json({ error: "Issue not found" }, { status: 404 });
     }
 
-    const updatedIssue = prisma.issue.update({
+    const updatedIssue = await prisma.issue.update({
         where: {
             id: parseInt(params.id)
         },
