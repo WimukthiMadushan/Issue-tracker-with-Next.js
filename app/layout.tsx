@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./NavBar";
 import AuthProvider from "./auth/Provider";
+import QueryClientProvider from "./QueryClientProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,6 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en"> 
+      <QueryClientProvider>
       <AuthProvider>
       <body className={inter.variable}>
         <Theme className="">
@@ -37,6 +39,7 @@ export default function RootLayout({
         </Theme>
         </body> 
         </AuthProvider>
+        </QueryClientProvider>
     </html>
   );
 }
