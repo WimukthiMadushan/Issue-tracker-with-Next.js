@@ -1,6 +1,6 @@
 'use client'
 import Spinner from '@/app/components/Spinner'
-import { AlertDialog, Button, Flex } from '@radix-ui/themes'
+import { AlertDialog, Button, Dialog, Flex } from '@radix-ui/themes'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -13,10 +13,11 @@ const DeleteIssueButton = ({issueId}: {issueId: number}) => {
     setIsDeleting(true)
     try {
       await axios.delete('/api/issues/' + issueId)
-      router.push('/issues')
+      router.push('/issues/list')
       router.refresh()
+      setIsDeleting(false)
       } catch (error) {
-        setIsDeleting(true);
+        setIsDeleting(false);
         setError(true)
     }
   }
@@ -39,11 +40,11 @@ const DeleteIssueButton = ({issueId}: {issueId: number}) => {
         </Flex>
       </AlertDialog.Content>
     </AlertDialog.Root>
-      <AlertDialog.Root open={error}>
-        <AlertDialog.Title>Error</AlertDialog.Title>
-        <AlertDialog.Description>This issue could not be deleted.</AlertDialog.Description>
+      <Dialog.Root open={error} onOpenChange={setError}>
+        <Dialog.Title>Error</Dialog.Title>
+        <Dialog.Description>This issue could not be deleted.</Dialog.Description>
         <Button color='gray'variant='soft' mt='2' onClick={() => setError(false)}>OK</Button>
-      </AlertDialog.Root>
+      </Dialog.Root>
     </>
       
   )
