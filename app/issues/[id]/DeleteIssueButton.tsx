@@ -40,11 +40,12 @@ const DeleteIssueButton = ({issueId}: {issueId: number}) => {
         </Flex>
       </AlertDialog.Content>
     </AlertDialog.Root>
-      <Dialog.Root open={error} onOpenChange={setError}>
-        <Dialog.Title>Error</Dialog.Title>
-        <Dialog.Description>This issue could not be deleted.</Dialog.Description>
-        <Button color='gray'variant='soft' mt='2' onClick={() => setError(false)}>OK</Button>
-      </Dialog.Root>
+      <AlertDialog.Root open={error}>
+        <AlertDialog.Content>
+          <AlertDialog.Title>Something Went Wrong</AlertDialog.Title>
+          <AlertDialog.Action><Button onClick={() => setError(false)}>OK</Button></AlertDialog.Action>
+        </AlertDialog.Content>
+      </AlertDialog.Root>
     </>
       
   )
