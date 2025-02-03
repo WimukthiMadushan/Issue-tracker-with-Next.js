@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import React from 'react'
 import { useSession } from "next-auth/react";
 import { FaBug } from "react-icons/fa";
-import { Box } from '@radix-ui/themes';
+import { Box, Container, Flex } from '@radix-ui/themes';
 
 const NavBar = () => {
     const currentPath = usePathname();
@@ -14,7 +14,10 @@ const NavBar = () => {
         { label: 'Issues', href: '/issues/list' }
     ]
   return (
-      <nav className='flex space-x-6 border-b-2 mb-5 px-5 h-14 items-center'>
+    <nav className='border-b-2 mb-5 px-5 py-3'>
+      <Container>
+      <Flex justify='between' align='center'>
+        <Flex align='center' gap='3'>
           <Link href={'/'}><FaBug /></Link>
           <ul className='flex space-x-6'>
               {links.map((link) => (
@@ -24,7 +27,8 @@ const NavBar = () => {
                     </li>
                 ))}
           </ul>
-          <Box>
+        </Flex>
+        <Box>
               {status === 'authenticated' && (
                   <Link href={'/api/auth/signout'}>Sign out</Link>
               )}
@@ -33,6 +37,8 @@ const NavBar = () => {
                 )}
               
           </Box>
+        </Flex> 
+      </Container>  
     </nav>
   )
 }
