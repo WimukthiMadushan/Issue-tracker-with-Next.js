@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📌 Issue Tracker
 
-## Getting Started
+A modern issue tracker built with **Next.js, MySQL, Prisma ORM**, and **Google Authentication**.
 
-First, run the development server:
+## 🚀 Features
+- 🏗 **Next.js** for full-stack capabilities
+- 🗄 **MySQL** as the database
+- 🔧 **Prisma ORM** for database management
+- 📌 **Database migrations** with Prisma Migrate
+- 🔐 **Google Authentication** for secure login
 
+## 📂 Project Setup
+
+### 1️⃣ Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/WimukthiMadushan/your-repo.git
+cd your-repo
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Install Dependencies
+```bash
+npm install  # or yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3️⃣ Setup Environment Variables
+Create a `.env` file in the root directory and add the required variables:
+```env
+DATABASE_URL="mysql://USER:PASSWORD@localhost:3306/your-database"
+GOOGLE_CLIENT_ID="your-client-id"
+GOOGLE_CLIENT_SECRET="your-client-secret"
+NEXTAUTH_URL="http://localhost:3000"
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4️⃣ Run Database Migrations
+```bash
+npx prisma migrate dev
+```
 
-## Learn More
+### 5️⃣ Start Development Server
+```bash
+npm run dev  # or yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Overview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![image](https://github.com/user-attachments/assets/48d845d5-3af4-4101-8dd5-2bf8b185d972)
+![image](https://github.com/user-attachments/assets/b1d79db5-d0e7-4d2d-aceb-7fa6936a08f2)
+![image](https://github.com/user-attachments/assets/62d8aa86-67d2-4c19-83e3-35b109a10fb5)
+![image](https://github.com/user-attachments/assets/21b53cbe-196f-4b6d-b3b5-e197ce09dd50)
+![image](https://github.com/user-attachments/assets/2dc998e1-b47a-4375-a249-f4a38bd4341c)
+![image](https://github.com/user-attachments/assets/b38f2276-547d-47af-9096-7951b4be37b2)
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 📚 Learn More
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Prisma Documentation](https://www.prisma.io/docs)
+
+## 🤝 Contributing
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+## 📜 License
+This project is licensed under the **MIT License**.
