@@ -1,8 +1,17 @@
-import LatestIssues from "./LatestIssues";
+import {prisma} from '@/prisma/client';
+import IssueChart from './IssueChart';
+import IssueSummary from './IssueSummary';
 
-export default function Home({searchParams}: {searchParams: {page: string}}) {
+export default async function Home() {
+  const open = await prisma.issue.count({
+    where: { status: 'OPEN' },
+  });
+  const inProgress = await prisma.issue.count({
+    where: { status: 'IN_PROGRESS' },
+  });
+  const done = await prisma.issue.count({
+    where: { status: 'DONE' },
+  });
 
-  return (
-    <LatestIssues/>
-  );
+  return <IssueSummary open={open} inProgress={inProgress} done={done} />;
 }
